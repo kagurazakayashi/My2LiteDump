@@ -1,5 +1,22 @@
-# Created by https://www.toptal.com/developers/gitignore/api/windows,macos,linux,go,goland
-# Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,linux,go,goland
+*.xz
+*.tmp.*
+
+# Created by https://www.toptal.com/developers/gitignore/api/windows,linux,macos,go,goland,compressed
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,macos,go,goland,compressed
+
+### Compressed ###
+*.7z
+*.deb
+*.gz
+*.pkg
+*.rar
+*.rpm
+*.sit
+*.sitx
+*.tar
+*.zip
+*.zipx
+*.tgz
 
 ### Go ###
 # If you prefer the allow list template instead of the deny list, see community template:
@@ -211,4 +228,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/windows,macos,linux,go,goland
+# End of https://www.toptal.com/developers/gitignore/api/windows,linux,macos,go,goland,compressed

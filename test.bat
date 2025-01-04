@@ -1,0 +1,1 @@
+go run . -h "127.0.0.1" -P 3306 -D "test1" -T "test1" -u "test1" -p "test1" -K "id" -V "1-2" -f "B:\test1.sqlite" -t "test1"
