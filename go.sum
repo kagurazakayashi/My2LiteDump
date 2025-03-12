@@ -4,8 +4,12 @@ github.com/go-sql-driver/mysql v1.9.0 h1:Y0zIbQXhQKmQgTp44Y1dp3wTXcn804QoTptLZT1
 github.com/go-sql-driver/mysql v1.9.0/go.mod h1:pDetrLJeA3oMujJuvXc8RJoasr589B6A9fwzD3QMrqw=
 github.com/kagurazakayashi/libNyaruko_Go/nyamysql v0.0.0-20250310121524-7ef23cb4445e h1:qZHttsPNs5KGK0CxkQBKHuzMMEfZJVCKPUPUG01mm7k=
 github.com/kagurazakayashi/libNyaruko_Go/nyamysql v0.0.0-20250310121524-7ef23cb4445e/go.mod h1:ld2AAwp/U2juj024oBp2KDoimS5XQEWq0Xu5m4A/r20=
+github.com/kagurazakayashi/libNyaruko_Go/nyasqldrift v0.0.0-20250310121524-7ef23cb4445e h1:7Qb6g+oBPhM+MMF7zGYJ2yzYiBUc9+D3j9KkW5KMiYU=
+github.com/kagurazakayashi/libNyaruko_Go/nyasqldrift v0.0.0-20250310121524-7ef23cb4445e/go.mod h1:hal9gVJVhvBgAa9NULSWsf1g3G2xuGkjjBSFYgGQV5s=
 github.com/kagurazakayashi/libNyaruko_Go/nyasqlite v0.0.0-20250310121524-7ef23cb4445e h1:GtBNYHU4aD5w90rR8QyXWBORtMUSBrhj/pEJ+OqIz5k=
 github.com/kagurazakayashi/libNyaruko_Go/nyasqlite v0.0.0-20250310121524-7ef23cb4445e/go.mod h1:3ptj/ObJ0gIk4+IqQxvUDCyg3/CNooNYHQ43vVMzUkc=
+github.com/kagurazakayashi/libNyaruko_Go/nyasqlite v0.0.0-20250312122655-4aa38bb33643 h1:6kvO1dcNMoGT6BiIBPlaccYagLcfxwPSPcTxHh1uIkY=
+github.com/kagurazakayashi/libNyaruko_Go/nyasqlite v0.0.0-20250312122655-4aa38bb33643/go.mod h1:3ptj/ObJ0gIk4+IqQxvUDCyg3/CNooNYHQ43vVMzUkc=
 github.com/mattn/go-sqlite3 v1.14.25 h1:rszkIulEvxqZ8JfFG4yWEZh5u9qAKeSOdea67p8kk6s=
 github.com/mattn/go-sqlite3 v1.14.25/go.mod h1:Uh1q+B4BYcTPb+yiD3kU8Ct7aC0hY9fxUwlHK0RXw+Y=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=

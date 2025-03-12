@@ -6,9 +6,11 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	nyamysql "github.com/kagurazakayashi/libNyaruko_Go/nyamysql"
+	nyasqldrift "github.com/kagurazakayashi/libNyaruko_Go/nyasqldrift"
 	nyasqlite "github.com/kagurazakayashi/libNyaruko_Go/nyasqlite"
 	"gopkg.in/yaml.v3"
 )
@@ -29,12 +31,14 @@ func main() {
 	var contentBytes []byte
 	var my2LiteConfig My2LiteConfig
 	var errInfo string = ""
+	var err error = nil
 
 	var configFile *string = flag.String("c", "", "配置文件路径,默认则用`程序名.yaml||.json`")
 	flag.Parse()
 
 	if len(strings.TrimSpace(*configFile)) == 0 {
-		execPath, err := os.Executable()
+		var execPath string
+		execPath, err = os.Executable()
 		if err != nil {
 			log.Println("获取执行文件路径失败。")
 			log.Fatal(err)
@@ -109,6 +113,60 @@ func main() {
 		log.Fatal(sqlite.Error())
 	}
 	log.Println("成功。")
+
+	log.Println("读取 MySQL 数据表结构...")
+	var mysqlColumns []nyamysql.TableColumn
+	mysqlColumns, err = mysql.GetTableStructure(my2LiteConfig.MySQLTable)
+	if err != nil {
+		log.Println("失败！")
+		log.Fatal(err)
+	}
+	if len(mysqlColumns) == 0 {
+		log.Fatal("没有找到结构。")
+	} else {
+		for i := 0; i < len(mysqlColumns); i++ {
+			var column nyamysql.TableColumn = mysqlColumns[i]
+			println(strconv.Itoa(i) + " | " + column.ColumnName + " | " + column.ColumnType)
+		}
+		log.Println("成功。")
+	}
+
+	log.Println("读取 SQLite 数据表结构...")
+	var sqliteColumns []nyasqlite.TableColumn
+	sqliteColumns, err = sqlite.GetTableStructure(my2LiteConfig.MySQLTable)
+	if err != nil {
+		log.Println("失败！")
+		log.Fatal(err)
+	}
+	if len(sqliteColumns) == 0 {
+		log.Println("没有找到结构。创建结构...")
+		err = nyasqldrift.MigrateMySQLTableToSQLite(mysql, sqlite, my2LiteConfig.MySQLTable)
+		if err != nil {
+			log.Println("失败！")
+			log.Fatal(err)
+		}
+		log.Println("成功。")
+	} else {
+		for i := 0; i < len(sqliteColumns); i++ {
+			var column nyasqlite.TableColumn = sqliteColumns[i]
+			println(strconv.Itoa(i) + " | " + column.ColumnName + " | " + column.ColumnType)
+		}
+		log.Println("成功。")
+		log.Println("校验结构...")
+		if len(mysqlColumns) != len(sqliteColumns) {
+			log.Println("Len " + strconv.Itoa(len(mysqlColumns)) + " (M)!=(L) " + strconv.Itoa(len(sqliteColumns)))
+			log.Fatal("结构不匹配，中止。")
+		}
+		for i := 0; i < len(mysqlColumns); i++ {
+			var column nyasqlite.TableColumn = sqliteColumns[i]
+			if column.ColumnName != mysqlColumns[i].ColumnName {
+				log.Println(mysqlColumns[i].ColumnName + " (M)!=(L) " + column.ColumnName)
+				log.Fatal("结构不匹配，中止。")
+			}
+		}
+		log.Println("成功。")
+	}
+
 	disconnect()
 	log.Println("正常退出。")
 }

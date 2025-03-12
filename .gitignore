@@ -1,5 +1,8 @@
 *.xz
 *.tmp.*
+*.sql
+*.db
+*.sqlite
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,linux,macos,go,goland,compressed
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,macos,go,goland,compressed

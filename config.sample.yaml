@@ -1,0 +1,11 @@
+# MySQLDBConfig
+mysql_user: "root"
+mysql_pwd: "******"
+mysql_addr: "127.0.0.1"
+mysql_port: "3306"
+mysql_db: "my_archive"
+mysql_limit: "10000"
+mysql_table: "2012"
+# SQLiteConfig
+sqlite_ver: "sqlite3"
+sqlite_file: "my_archive_2012.sqlite"
